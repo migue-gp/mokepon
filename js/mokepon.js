@@ -174,6 +174,8 @@ function aleatorio(min, max)
 
 window.addEventListener("load", iniciarJuego)
 
+
+
 let mascotaJugador = ""; // Nueva variable global para almacenar la mascota seleccionada
 
 function seleccionarMascotaJugador() {
