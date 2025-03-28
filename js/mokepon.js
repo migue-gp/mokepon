@@ -3,8 +3,8 @@
 let ataqueJugador
 let ataqueEnemigo
 
-let vidasJugador = 3
-let vidasEnemigo = 3
+let vidasJugador = 20
+let vidasEnemigo = 20
 
 function iniciarJuego(){
 
@@ -23,8 +23,8 @@ function iniciarJuego(){
     let botonAgua = document.getElementById("boton-agua")
     botonAgua.addEventListener("click",ataqueAgua)
 
-    let botonTierra = document.getElementById("boton-tierra")
-    botonTierra.addEventListener("click",ataqueTierra)
+    let botonplanta = document.getElementById("boton-planta")
+    botonplanta.addEventListener("click",ataquePlanta)
 
     let botonReiniciar = document.getElementById("boton-reiniciar")
     botonReiniciar.addEventListener("click",reiniciarJuego)
@@ -81,8 +81,8 @@ function ataqueAgua(){
     ataqueAleatorioEnemigo()
 }
 
-function ataqueTierra(){
-    ataqueJugador = "TIERRA"
+function ataquePlanta(){
+    ataqueJugador = "PLANTA"
     ataqueAleatorioEnemigo()
 }
 
@@ -94,7 +94,7 @@ function ataqueAleatorioEnemigo(){
     }else if (ataqueAleatorio == 2){
         ataqueEnemigo = "AGUA"
     }else{
-        ataqueEnemigo = "TIERRA"
+        ataqueEnemigo = "PLANTA"
     }
     combate()
 }
@@ -105,7 +105,7 @@ function combate(){
 
     if(ataqueEnemigo == ataqueJugador){
         crearMensaje("EMPATE")
-    }else if(ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA"){
+    }else if(ataqueJugador == "FUEGO" && ataqueEnemigo == "PLANTA"){
         crearMensaje("GANASTE")
         vidasEnemigo --
         spanVidasEnemigo.innerHTML = vidasEnemigo
@@ -113,7 +113,7 @@ function combate(){
         crearMensaje("GANASTE")
         vidasEnemigo --
         spanVidasEnemigo.innerHTML = vidasEnemigo
-    }else if(ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA"){
+    }else if(ataqueJugador == "PLANTA" && ataqueEnemigo == "AGUA"){
         crearMensaje("GANASTE")
         vidasEnemigo --
         spanVidasEnemigo.innerHTML = vidasEnemigo
@@ -156,8 +156,8 @@ function crearMensajeFinal(resultadoFinal){
     let botonAgua = document.getElementById("boton-agua")
     botonAgua.disabled = true
 
-    let botonTierra = document.getElementById("boton-tierra")
-    botonTierra.disabled = true
+    let botonplanta = document.getElementById("boton-planta")
+    botonplanta.disabled = true
 
     let sectionReiniciar= document.getElementById("reiniciar")
     sectionReiniciar.style.display = "block"
