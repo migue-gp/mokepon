@@ -173,3 +173,55 @@ function aleatorio(min, max)
 }
 
 window.addEventListener("load", iniciarJuego)
+
+let mascotaJugador = ""; // Nueva variable global para almacenar la mascota seleccionada
+
+function seleccionarMascotaJugador() {
+    let sectionSeleccionarMascota = document.getElementById("seleccionar-mascota");
+    sectionSeleccionarMascota.style.display = "none";
+
+    let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
+    sectionSeleccionarAtaque.style.display = "flex";
+
+    let hipodogeSeleccionado = document.getElementById("hipodoge").checked;
+    let capipepoSeleccionado = document.getElementById("capipepo").checked;
+    let ratigueyaSeleccionado = document.getElementById("ratigueya").checked;
+
+    let spanMascotaJugador = document.getElementById("mascota-jugador");
+    let imgMascotaJugador = document.getElementById("img-mascota-jugador");
+
+    if (hipodogeSeleccionado) {
+        spanMascotaJugador.innerHTML = "Hipodoge";
+        imgMascotaJugador.src = "./assets/hipodoge.png"; // Cambia la ruta según la ubicación de tu imagen
+        mascotaJugador = "Hipodoge"; // Guardamos la selección
+    } else if (capipepoSeleccionado) {
+        spanMascotaJugador.innerHTML = "Capipepo";
+        imgMascotaJugador.src = "./assets/capipepo.png"; // Cambia la ruta según la ubicación de tu imagen
+        mascotaJugador = "Capipepo"; // Guardamos la selección
+    } else if (ratigueyaSeleccionado) {
+        spanMascotaJugador.innerHTML = "Ratigueya";
+        imgMascotaJugador.src = "./assets/ratigueya.png"; // Cambia la ruta según la ubicación de tu imagen
+        mascotaJugador = "Ratigueya"; // Guardamos la selección
+    } else {
+        alert("Debes seleccionar una Mascota");
+    }
+
+    seleccionarMascotaEnemigo(); // Seleccionamos la mascota del enemigo
+}
+
+function seleccionarMascotaEnemigo() {
+    let mascotaAleatorio = aleatorio(1, 3);
+    let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
+    let imgMascotaEnemigo = document.getElementById("img-mascota-enemigo");
+
+    if (mascotaAleatorio == 1) {
+        spanMascotaEnemigo.innerHTML = "Hipodoge";
+        imgMascotaEnemigo.src = "./assets/hipodoge.png"; // Cambia la ruta según la ubicación de tu imagen
+    } else if (mascotaAleatorio == 2) {
+        spanMascotaEnemigo.innerHTML = "Capipepo";
+        imgMascotaEnemigo.src = "./assets/capipepo.png"; // Cambia la ruta según la ubicación de tu imagen
+    } else {
+        spanMascotaEnemigo.innerHTML = "Ratigueya";
+        imgMascotaEnemigo.src = "./assets/ratigueya.png"; // Cambia la ruta según la ubicación de tu imagen
+    }
+}

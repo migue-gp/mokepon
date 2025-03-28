@@ -50,6 +50,7 @@ body{
     align-items: center;
     color: #03045e;
     flex-direction: column;
+    transition: background-color 0.3s ease; /* Transición suave */
 }
 
 .tarjeta-de-mokepon img{
@@ -64,6 +65,28 @@ body{
 input{
     display: none;
 }
+
+
+input[type="radio"]:checked + label[for="hipodoge"] {
+    background-color: #90e0ef; /* Color cuando se selecciona Ratigueya */
+    color: white;
+}
+
+input[type="radio"]:checked + label[for="capipepo"] {
+        background-color: #00b4d8; /* Color cuando se selecciona Capipepo */
+        color: white;
+}
+
+input[type="radio"]:checked + label[for="ratigueya"] {
+    background-color: #90e0ef; /* Color cuando se selecciona Ratigueya */
+    color: white;
+}
+
+.tarjeta-de-mokepon:hover {
+    background-color: rgba(0, 116, 182, 0.5); /* Un color más oscuro de fondo al pasar el mouse */
+    cursor: pointer;
+}
+
 
 #boton-mascota{
     box-sizing: border-box;
