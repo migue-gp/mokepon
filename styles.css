@@ -138,9 +138,31 @@ input[type="radio"]:checked + label[for="ratigueya"] {
     font-size: 20px;
 }
 
-.ataques{
+.ataques {
     display: grid;
     grid-template-columns: 100px 100px;
     text-align: center;
-    text-align: center;
+    gap: 30px; /* Espacio entre los elementos */
+    justify-items: center;
+    margin-top: 20px;
+}
+
+.ataques div {
+    background-color: rgba(189, 224, 254, 0.7); /* Fondo de color claro */
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #03045e;
+}
+
+#img-mascota-jugador, #img-mascota-enemigo {
+    width: 120px;
+    max-width: 100%; /* Se ajusta la imagen al contenedor */
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+#mascota-jugador, #mascota-enemigo {
+    font-size: 18px;
+    color: #03045e;
+    font-weight: bold;
 }
