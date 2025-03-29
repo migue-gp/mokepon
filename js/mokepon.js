@@ -6,6 +6,8 @@ let ataqueEnemigo
 let vidasJugador = 20
 let vidasEnemigo = 20
 
+let contadorUlti = 0;
+
 function iniciarJuego(){
 
     let sectionSeleccionarAtaque= document.getElementById("seleccionar-ataque")
@@ -25,6 +27,10 @@ function iniciarJuego(){
 
     let botonplanta = document.getElementById("boton-planta")
     botonplanta.addEventListener("click",ataquePlanta)
+
+    let botonUlti = document.getElementById("boton-ulti");
+    botonUlti.addEventListener("click", ataqueUlti);
+    botonUlti.disabled = true;
 
     let botonReiniciar = document.getElementById("boton-reiniciar")
     botonReiniciar.addEventListener("click",reiniciarJuego)
@@ -86,6 +92,16 @@ function ataquePlanta(){
     ataqueAleatorioEnemigo()
 }
 
+function ataqueUlti(){
+    ataqueJugador = "ULTI"
+    ataqueAleatorioEnemigo()
+
+    let botonUlti = document.getElementById("boton-ulti");
+    botonUlti.disabled = true;
+
+    contadorUlti = 0;
+}
+
 function ataqueAleatorioEnemigo(){
     let ataqueAleatorio = aleatorio(1,3)
 
@@ -93,9 +109,11 @@ function ataqueAleatorioEnemigo(){
         ataqueEnemigo = "FUEGO"
     }else if (ataqueAleatorio == 2){
         ataqueEnemigo = "AGUA"
-    }else{
+    }else if (ataqueAleatorio == 3){
         ataqueEnemigo = "PLANTA"
-    }
+    } else (
+        ataqueEnemigo="ULTI"
+    )
     combate()
 }
 
@@ -103,28 +121,47 @@ function combate(){
     let spanVidasJugador = document.getElementById("vidas-jugador")
     let spanVidasEnemigo = document.getElementById("vidas-enemigo")
 
+
+
     if(ataqueEnemigo == ataqueJugador){
         crearMensaje("EMPATE")
+        contadorUlti + 0
+
     }else if(ataqueJugador == "FUEGO" && ataqueEnemigo == "PLANTA"){
         crearMensaje("GANASTE")
+        contadorUlti ++
         vidasEnemigo --
         spanVidasEnemigo.innerHTML = vidasEnemigo
     }else if(ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO"){
         crearMensaje("GANASTE")
+        contadorUlti ++
         vidasEnemigo --
         spanVidasEnemigo.innerHTML = vidasEnemigo
     }else if(ataqueJugador == "PLANTA" && ataqueEnemigo == "AGUA"){
         crearMensaje("GANASTE")
+        contadorUlti ++
         vidasEnemigo --
         spanVidasEnemigo.innerHTML = vidasEnemigo
     }else{
         crearMensaje("PERDISTE")
+        contadorUlti +2
         vidasJugador --
         spanVidasJugador.innerHTML = vidasJugador
     }
 
+
+    revisarcontadorUlti()
     revisarVidas()
 }
+
+function revisarcontadorUlti() {
+    if (contadorUlti >= 5) {
+        let botonUlti = document.getElementById("boton-ulti");
+        botonUlti.disabled = false; 
+        contador = 0; 
+    }
+}
+
 
 function revisarVidas(){
     if(vidasEnemigo == 0){
@@ -158,6 +195,9 @@ function crearMensajeFinal(resultadoFinal){
 
     let botonplanta = document.getElementById("boton-planta")
     botonplanta.disabled = true
+
+    let botonUlti = document.getElementById("boton-ulti");
+    botonUlti.disabled = true;
 
     let sectionReiniciar= document.getElementById("reiniciar")
     sectionReiniciar.style.display = "block"
